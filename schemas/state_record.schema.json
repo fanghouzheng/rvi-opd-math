@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RvI-OPD state record",
+  "type": "object",
+  "required": ["problem_id", "rollout_id", "token_index", "signals", "route", "budget"],
+  "properties": {
+    "problem_id": {"type": "string"},
+    "rollout_id": {"type": "string"},
+    "token_index": {"type": "integer", "minimum": 0},
+    "normalized_position": {"type": "number", "minimum": 0, "maximum": 1},
+    "signals": {
+      "type": "object",
+      "required": ["disagreement", "coverage", "d_learnable", "d_incompatible", "s2"],
+      "additionalProperties": {"type": "number"}
+    },
+    "route": {"enum": ["repair", "intervene", "discard"]},
+    "accepted": {"type": ["boolean", "null"]},
+    "budget": {
+      "type": "object",
+      "required": ["teacher_generated_tokens", "supervised_positions", "teacher_forward_tokens"],
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    }
+  }
+}
+

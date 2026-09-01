@@ -1,0 +1,83 @@
+protocol_version: 0.1.0
+seed_registry: [17, 29, 43]
+
+models:
+  teacher: Qwen/Qwen3-4B-Instruct-2507
+  student: Qwen/Qwen3-1.7B
+  student_mode: non_thinking
+
+data:
+  train: DAPO-Math-17K-English
+  calibration_fraction: 0.05
+  calibration_seed: 20260901
+  deduplicate_against_eval: true
+
+rollout:
+  max_prompt_tokens: 2048
+  max_response_tokens: 16384
+  temperature: 1.0
+  top_p: 1.0
+  samples_per_prompt: 1
+
+optimization:
+  global_batch_size: 128
+  mini_batch_size: 128
+  epochs: 1
+  ppo_epochs: 1
+  clip_range: 0.2
+  learning_rate: 1.0e-6
+  schedule: constant
+
+signals:
+  support_top_k: 16
+  normalization_quantiles: [0.05, 0.95]
+  repair_quantile: 0.90
+  intervene_quantile: 0.90
+  epistemic_phrases:
+    - Wait
+    - Actually
+    - However
+    - Alternatively
+    - Oops
+    - Wrong
+    - Error
+    - Incorrect
+    - Correction
+    - Sorry
+    - Hmm
+    - Oh
+    - Hold
+    - Pause
+    - Uh
+    - Um
+
+actions:
+  repair:
+    loss: teacher_topk_forward_ce
+    teacher_top_k: 128
+  intervene:
+    max_takeovers: 2
+    paragraphs_per_takeover: 3
+    cooldown_valid_triggers: 0
+  acceptance_gate:
+    enabled: true
+    continuation_tokens: 128
+    accept_if: s2_below_calibrated_low_or_teacher_preference_improves
+    fallback: repair_original_context
+
+evaluation:
+  max_response_tokens: 32768
+  temperature: 1.0
+  top_p: 1.0
+  sample_counts:
+    aime24: 32
+    aime25: 32
+    aime26: 32
+    math500: 4
+    amc23: 32
+    olympiadbench: 4
+    hmmt_feb26: 32
+    hmmt_nov25: 32
+  forgetting_check: mmlu
+  bootstrap_clusters: problem
+  bootstrap_samples: 10000

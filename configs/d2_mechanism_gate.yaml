@@ -1,0 +1,20 @@
+experiment: D2_paired_continuation_gate
+inherits: configs/base.yaml
+cohort: d_incompatible_top_and_s2_high
+held_out_states: 512
+continuation_tokens: 128
+arms: [base_checkpoint, repair_checkpoint, bridge_context]
+paired_sampling:
+  completions_per_state: 8
+  common_random_numbers: true
+primary_metrics:
+  - s2_residual_auc
+  - verifier_pass_rate
+  - teacher_preferred_token_rate
+hard_gate:
+  require:
+    - repair_s2_delta_ci_contains_zero_or_worse
+    - bridge_s2_delta_ci_below_zero
+  alpha: 0.05
+  failure_outcome: stop_state_axis_claim_and_report_exploratory
+

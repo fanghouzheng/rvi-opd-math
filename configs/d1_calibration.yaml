@@ -1,0 +1,17 @@
+experiment: D1_signal_calibration
+inherits: configs/base.yaml
+state_bank:
+  split: calibration_only
+  prompts: 512
+  max_states_per_prompt: 256
+  stratify_by_normalized_position: 8
+audits:
+  support_top_k: [8, 16, 32]
+  epistemic_set: [trd16, relay13, intersection, union]
+  quantiles: [0.50, 0.75, 0.90, 0.95]
+outputs:
+  - frozen_thresholds.json
+  - state_prevalence.json
+  - signal_correlations.json
+  - candidate_state_bank.parquet
+

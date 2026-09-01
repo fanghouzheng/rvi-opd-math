@@ -1,0 +1,24 @@
+experiment: D0_state_action_factorial
+inherits: configs/base.yaml
+stage: fixed_state_then_training
+factors:
+  support_type: [d_learnable_top, d_incompatible_top]
+  state_damage: [s2_low, s2_high]
+  action: [repair, intervene]
+selection:
+  high_quantile: 0.90
+  low_quantile: 0.50
+  exact_problem_matching: true
+budget_match:
+  primary: supervised_action_positions
+  per_state: true
+  repair_window_matches_realized_bridge_length: true
+  report_ledgers:
+    - teacher_generated_tokens
+    - supervised_positions
+    - teacher_forward_tokens
+primary_contrasts:
+  - d_incompatible_top:s2_low:repair_minus_intervene
+  - d_incompatible_top:s2_high:intervene_minus_repair
+  - action_x_state_damage_interaction
+

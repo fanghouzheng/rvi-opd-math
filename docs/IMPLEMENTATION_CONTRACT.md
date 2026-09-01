@@ -60,4 +60,3 @@ D0 主机制对照按 `supervised_positions` 逐 state 精确匹配，并同时�
 - 每次运行写入 git commit、upstream commit、完整 Hydra/YAML、镜像 digest、GPU 型号、CUDA/vLLM/verl 版本和数据哈希。
 - checkpoint selection 仅依据预注册 validation composite，不按 test suite 平均分挑 step。
 - 训练 seed 至少 3 个；如资源不足，单 seed 只标记 pilot，不进入主结论。
-

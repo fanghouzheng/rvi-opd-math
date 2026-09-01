@@ -68,4 +68,3 @@ checkpoints/
 ## 当前实现状态
 
 本版本已完成实验协议、CPU 信号/路由/预算/统计模块、配置与 CI。Relay GPU 母工程中的 RvI rollout patch 尚未合入；在该补丁完成前，只能运行上游 Base/OPD/FastOPD/Relay/TRD 复现和本仓库 CPU 验证，不能启动 RvI 主训练。实现必须遵循 `docs/IMPLEMENTATION_CONTRACT.md`，尤其是三本预算账和 rollback 语义。
-

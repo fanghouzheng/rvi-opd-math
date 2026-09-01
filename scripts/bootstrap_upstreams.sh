@@ -22,4 +22,3 @@ clone_at trd https://github.com/louieworth/trd.git 5f3894d776cb2b762a44e09f8ce82
 clone_at ta-opd https://github.com/wyy-code/TA-OPD.git ccdf21d2066466f3d616f63cd867cc49119c45e6
 
 echo "Pinned upstream repositories are available under $vendor_root"
-

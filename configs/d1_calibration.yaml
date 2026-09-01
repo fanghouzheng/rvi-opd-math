@@ -14,4 +14,3 @@ outputs:
   - state_prevalence.json
   - signal_correlations.json
   - candidate_state_bank.parquet
-

@@ -165,4 +165,3 @@ online threshold 只读取 D1 冻结文件。front-loading 采用首次有效 tr
 `P0 -> D1 threshold freeze -> D2 hard gate -> D0 seed17 -> D0 seeds29/43 -> D3 -> E1 Tier1 -> A2 -> E1 Tier2 -> remaining ablations`。
 
 任何后续变更必须在 `experiments/manifest.csv` 增加新 run id，并在结果中区分 confirmatory 与 exploratory。
-

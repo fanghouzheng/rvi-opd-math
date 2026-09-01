@@ -10,4 +10,3 @@ D0-DI-LOW-I-S17,D0,factorial,DI_high_s2_low,intervene,17,blocked_by_D2,configs/d
 D0-DI-HIGH-R-S17,D0,factorial,DI_high_s2_high,repair,17,blocked_by_D2,configs/d0_factorial.yaml,cosmetic correction cell
 D0-DI-HIGH-I-S17,D0,factorial,DI_high_s2_high,intervene,17,blocked_by_D2,configs/d0_factorial.yaml,state-change cell
 D3-S17,D3,detached_control,routed_intervention,detached,17,blocked_by_D0,configs/d3_detached.yaml,target-vs-context control
-

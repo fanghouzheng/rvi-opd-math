@@ -21,4 +21,3 @@ primary_contrasts:
   - d_incompatible_top:s2_low:repair_minus_intervene
   - d_incompatible_top:s2_high:intervene_minus_repair
   - action_x_state_damage_interaction
-

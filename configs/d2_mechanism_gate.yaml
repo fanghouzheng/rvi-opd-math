@@ -17,4 +17,3 @@ hard_gate:
     - bridge_s2_delta_ci_below_zero
   alpha: 0.05
   failure_outcome: stop_state_axis_claim_and_report_exploratory
-
